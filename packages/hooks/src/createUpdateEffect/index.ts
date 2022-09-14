@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import type { useEffect, useLayoutEffect } from 'react';
+import { useRef, useEffect } from 'react';
+import type { useLayoutEffect, EffectCallback, DependencyList } from 'react';
 
 type EffectHookType = typeof useEffect | typeof useLayoutEffect;
 
@@ -35,4 +35,14 @@ export function useIsFirstRender(): boolean {
   }
 
   return isFirst.current;
+}
+
+export function useUpdateEffect(effect: EffectCallback, deps?: DependencyList) {
+  const isFirst = useIsFirstRender();
+
+  useEffect(() => {
+    if (!isFirst) {
+      return effect();
+    }
+  }, deps);
 }
