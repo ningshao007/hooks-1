@@ -2,6 +2,9 @@ import { useCallback, useEffect, useRef } from 'react';
 import useLatest from '../useLatest';
 import { isNumber } from '../utils';
 
+/**
+ * setTimeout hooks
+ */
 function useTimeout(fn: () => void, delay: number | undefined) {
   const fnRef = useLatest(fn);
   const timerRef = useRef<number | NodeJS.Timer>();
@@ -12,6 +15,7 @@ function useTimeout(fn: () => void, delay: number | undefined) {
     timerRef.current = setTimeout(() => {
       fnRef.current();
     }, delay);
+
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current as NodeJS.Timer);
