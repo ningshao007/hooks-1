@@ -11,7 +11,9 @@ function useSafeState<S>(initialState?: S | (() => S)) {
   const [state, setState] = useState(initialState);
   const setCurrentState = useCallback((currentState) => {
     /** if component is unmounted, stop update */
+    // 避免内在泄漏
     if (unmountedRef.current) return;
+
     setState(currentState);
   }, []);
 

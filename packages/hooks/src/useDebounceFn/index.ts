@@ -21,6 +21,7 @@ function useDebounceFn<T extends noop>(fn: T, options?: DebounceOptions) {
 
   const debounced = useMemo(
     () =>
+    // wonderful Parameters<T> & ReturnType<T>
       debounce(
         (...args: Parameters<T>): ReturnType<T> => {
           return fnRef.current(...args);
