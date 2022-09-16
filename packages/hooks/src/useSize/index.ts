@@ -17,6 +17,7 @@ function useSize(target: BasicTarget): Size | undefined {
         return;
       }
 
+      // ResizeObserver避免了在自身回调中调整大小,从而触发的无限架设和循环依赖.这个api性能会更好
       const resizeObserver = new ResizeObserver((entries) => {
         entries.forEach((entry) => {
           const { clientWidth, clientHeight } = entry.target;
@@ -27,7 +28,10 @@ function useSize(target: BasicTarget): Size | undefined {
         });
       });
 
+      // 开始观察el
       resizeObserver.observe(el);
+
+      // 结束观察el
       return () => {
         resizeObserver.disconnect();
       };
