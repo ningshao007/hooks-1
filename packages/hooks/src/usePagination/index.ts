@@ -4,6 +4,7 @@ import useRequest from '../useRequest';
 
 import type { Data, PaginationOptions, Params, Service, PaginationResult } from './types';
 
+// TODO:
 const usePagination = <TData extends Data, TParams extends Params>(
   service: Service<TData, TParams>,
   options: PaginationOptions<TData, TParams> = {},

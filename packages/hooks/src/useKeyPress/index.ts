@@ -4,6 +4,7 @@ import type { BasicTarget } from '../utils/domTarget';
 import { getTargetElement } from '../utils/domTarget';
 import useDeepCompareEffectWithTarget from '../utils/useDeepCompareWithTarget';
 
+// TODO:
 export type KeyPredicate = (event: KeyboardEvent) => boolean;
 export type keyType = number | string;
 export type KeyFilter = keyType | keyType[] | ((event: KeyboardEvent) => boolean);

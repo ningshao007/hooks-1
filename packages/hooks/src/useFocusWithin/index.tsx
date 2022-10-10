@@ -8,6 +8,7 @@ export interface Options {
   onChange?: (isFocusWithin: boolean) => void;
 }
 
+// 同css属性focus-within
 export default function useFocusWithin(target: BasicTarget, options?: Options) {
   const [isFocusWithin, setIsFocusWithin] = useState(false);
   const { onFocus, onBlur, onChange } = options || {};

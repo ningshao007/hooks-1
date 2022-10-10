@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useRef } from 'react';
 import useLatest from '../useLatest';
 import { isNumber } from '../utils';
+/** 
+ * 用requestAnimationFrame模拟实现unInterval 
+ * 好处是可以在页面不渲染的情况时停止执行定时器
+ */
 
 interface Handle {
   id: number | NodeJS.Timer;

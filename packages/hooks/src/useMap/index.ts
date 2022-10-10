@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import useMemoizedFn from '../useMemoizedFn';
 
+/** 
+ * Map的值可以是任何类型
+ * Map中的键是有序的,而对象并不是
+ * Map在频繁增删操作中性能更好
+ */
 function useMap<K, T>(initialValue?: Iterable<readonly [K, T]>) {
   const getInitValue = () => {
     return initialValue === undefined ? new Map() : new Map(initialValue);
